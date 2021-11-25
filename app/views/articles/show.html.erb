@@ -1,0 +1,8 @@
+<<h1>showing articles details</h1>
+<p><strong>Title :</strong> <%= @article.title %></p>
+<p><strong>Author :</strong> <%= @article.Author %></p>
+<p><strong>Description :</strong> <%= @article.description %></p>
+<br>
+<%=link_to 'edit', edit_article_path(@article)%> | |
+<%=link_to 'delete', article_path(@article), data:{confirm: "are you sure you want ro delete "}%>
+<%= link_to 'return to articles listing', articles_path%>
