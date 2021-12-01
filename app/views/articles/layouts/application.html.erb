@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Alphablog</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+<div class="page-content">
+
+
+  <body class="d-flex flex-column ">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+
+        <%= link_to "ALPHA BLOG", root_path, class: "navbar-brand", id: "logo"%>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+            <li class="nav-item">
+
+              <%= link_to "Blogger", users_path, class:"nav-link"  %>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <%= link_to "Articles", articles_url, class:"dropdown-item"%>
+
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+
+            <% if logged_in?%>
+            <li class="nav-item">
+                <%= link_to current_user.username, user_path(current_user), class:"nav-link" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to "Logout", logout_path, class:"nav-link", method: :delete%>
+            </li>
+            <%else%>
+            <li class="nav-item">
+                <%= link_to "Login", login_path, class:"nav-link"%>
+
+            </li>
+            <%end%>
+            <li class="nav-item">
+                <%= link_to "sign up",signup_path, class:"nav-link"%>
+
+            </li>
+
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <% flash.each do |name, msg| %>
+  <%= msg %>
+<% end %>
+<%= yield %>
+  </div>
+
+
+  </body>
+  <footer id="sticky-footer" class=" py-4 bg-dark text-white-50">
+      <div class="container text-center">
+        <small>Copyright &copy; Your Website</small>
+      </div>
+    </footer>
+</html>
