@@ -33,8 +33,9 @@
                 <li>
                   <%= link_to "Articles",articles_path,class:"dropdown-item"%></li>
                     <%if logged_in?%>
-                <li><%= link_to "create article", new_article_url ,class:"dropdown-item"%>
+                <li><%= link_to "create article", new_article_url ,class:"dropdown-item"%></li>
                     <%end%>
+
                   <a class="dropdown-item" href="#">Another action</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -49,11 +50,11 @@
                 <li>
                   <%= link_to "View your Profile",user_path(current_user),class:"dropdown-item"%></li>
 
-                <li><%= link_to "Edit your Profile", edit_user_path(current_user) ,class:"dropdown-item"%>
+                <li><%= link_to "Edit your Profile", edit_user_path(current_user) ,class:"dropdown-item"%>    </li>
 
-                  
+                              <li><%= link_to "Delete Account", user_path(current_user),class:"dropdown-item", method: :delete%></li>
               </ul>
-            </li>
+
             <%end%>
             <% if logged_in?%>
 
