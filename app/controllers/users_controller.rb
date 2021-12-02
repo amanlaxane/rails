@@ -17,8 +17,9 @@ end
   def create
     @user=User.create(user_params)
     if @user.save
+      session[:user_id]=@user.id
       flash[:notice]="welcome to Alphablog you have succesfully signed up"
-      redirect_to @user
+      redirect_to @user.articles
     else
       render 'new'
     end
@@ -39,6 +40,7 @@ end
     end
 
   end
+
   private
     def user_params
       params.require(:user).permit(:username, :email, :password)

@@ -1,8 +1,13 @@
 <h1 class="text-center mt-4"> <%=@users.username%>'s Profile</h1>
 
-<%= gravatar_for @users, size:200 %>
+
+
 
 <div class="text-center mt-4">
+  <div class="photo ">
+    <%= gravatar_for @users, size:200%>
+  </div>
+  <br><br>
 <%=link_to "Edit your profile",edit_user_path(@users),class: "btn btn-outline-info" %>
 </div>
 
