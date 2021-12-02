@@ -3,6 +3,9 @@
 <p><strong>Author :</strong> <%= @article.Author %></p>
 <p><strong>Description :</strong> <%= @article.description %></p>
 <br>
+<%if logged_in? && @article.user == current_user%>
 <%=link_to 'edit', edit_article_path(@article)%> | |
 <%=link_to 'delete', article_path(@article), data:{confirm: "are you sure you want ro delete "}%>
 <%= link_to 'return to articles listing', articles_path%>
+<%else%>
+<%end%>
