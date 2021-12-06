@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_user, except: [:show, :index]
+  before_action :require_user, except: [:show, :index, :create,:new]
 
 def show
 @users=User.find(params[:id])
@@ -20,13 +20,18 @@ end
     if @user.save
       session[:user_id]=@user.id
       flash[:notice]="welcome to Alphablog you have succesfully signed up"
-      redirect_to @user.articles
+      redirect_to @user
     else
       render 'new'
     end
   end
 
 def destroy
+  @users=User.find(params[:id])
+  @users.destroy
+  session[:user_id]=nil
+  flash[:notice]="Account and all related information deleted"
+  redirect_to "home"
 end
   def edit
       @user=User.find(params[:id])
