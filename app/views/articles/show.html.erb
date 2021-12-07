@@ -11,7 +11,7 @@
     <h5 class="card-title"><%= @article.title %></h5>
     <p class="card-title "><%= @article.description %></p>
 
-    <%if logged_in? && @article.user == current_user%>
+    <%if logged_in? &&( @article.user == current_user||current_user.admin?%>
     <%=link_to 'edit', edit_article_path(@article),class:"btn btn-outline-info"%>
     <%=link_to 'delete', article_path(@article), data:{confirm: "are you sure you want ro delete "},class:"btn btn-outline-danger"%>
 
