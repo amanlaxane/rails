@@ -32,6 +32,7 @@ def destroy
   session[:user_id]=nil if @user ==current_user
   flash[:notice]="Account and all related information deleted"
   redirect_to "home"
+
 end
   def edit
       @user=User.find(params[:id])

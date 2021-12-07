@@ -15,17 +15,18 @@
     <p class="card-text "><%= pluralize(art.articles.count, "articles") %></p>
     <%=link_to  'View Profile', user_path(art), class: "btn btn-outline-info"%>
     <%if logged_in? %>
-    <%=if art.username==current_user.username%>
+    <%if art.username==current_user.username%>
     <%= link_to 'edit profile', edit_user_path(art), class: "btn btn-outline-warning"%>
   <%end%>
+
         <% if current_user.admin?%>
           <%= link_to 'Delete profile', user_path(art), class: "btn btn-outline-danger",method: :delete,
         data:{confirm:"Are you sure you want to delete this profile"}  %>
     <%end%>
-
+  <%end%>
   </div>
 </div>
 </div>
 </div>
 
-<% end %>
+<%end%>
